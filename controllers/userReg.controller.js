@@ -1,5 +1,5 @@
 const User = require("../models/userReg.model");
-const userReg = async (req, res) => {
+const RegController = async (req, res) => {
   try {
     const { username, email, password, dob } = req.body;
     const find_email = await User.findOne({ email: email });
