@@ -30,5 +30,17 @@ const userReg = async (req, res) => {
     });
   }
 };
-
-module.exports = userReg;
+const getAllUsers = async (req, res) => {
+  try {
+    const user = await User.find();
+    user
+      ? res.status(200).send({ user })
+      : res.status(404).send({ message: "user not found" });
+  } catch (error) {
+    res.status(400).send({
+      message: "bad request",
+      error: error.message,
+    });
+  }
+};
+module.exports = { RegController, getAllUsers };
